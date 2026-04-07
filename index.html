@@ -1,568 +1,767 @@
-<!doctype html>
-<html lang="es" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roy Rebuffo Tabacman - Full Stack Developer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/_sdk/element_sdk.js"></script>
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>roy@portfolio: ~</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-dim": "#00deea",
+            "secondary-container": "#00696f",
+            "error-dim": "#d53d18",
+            "primary-container": "#2ff801",
+            "primary": "#8eff71",
+            "surface-dim": "#0e0e0e",
+            "surface-container-lowest": "#000000",
+            "tertiary-container": "#17eefa",
+            "surface-tint": "#8eff71",
+            "on-error": "#450900",
+            "surface-bright": "#2c2c2c",
+            "error": "#ff7351",
+            "on-surface-variant": "#adaaaa",
+            "on-secondary-fixed-variant": "#006065",
+            "on-primary-fixed": "#064200",
+            "surface-container-highest": "#262626",
+            "primary-fixed": "#2ff801",
+            "primary-fixed-dim": "#2be800",
+            "error-container": "#b92902",
+            "surface": "#0e0e0e",
+            "secondary-fixed-dim": "#00e2ed",
+            "on-tertiary": "#005d62",
+            "surface-container-high": "#201f1f",
+            "outline": "#767575",
+            "on-secondary": "#00565a",
+            "tertiary-fixed": "#17eefa",
+            "secondary": "#00f1fd",
+            "on-tertiary-fixed-variant": "#005e63",
+            "background": "#0e0e0e",
+            "on-primary": "#0d6100",
+            "outline-variant": "#484847",
+            "secondary-dim": "#00e2ed",
+            "surface-variant": "#262626",
+            "on-surface": "#ffffff",
+            "inverse-on-surface": "#565555",
+            "inverse-surface": "#fcf9f8",
+            "surface-container": "#1a1919",
+            "on-tertiary-fixed": "#003f43",
+            "on-secondary-fixed": "#004145",
+            "on-error-container": "#ffd2c8",
+            "surface-container-low": "#131313",
+            "on-background": "#ffffff",
+            "primary-dim": "#2be800",
+            "on-secondary-container": "#e1fdff",
+            "on-primary-container": "#0b5800",
+            "on-primary-fixed-variant": "#0d6200",
+            "on-tertiary-container": "#005458",
+            "inverse-primary": "#106f00",
+            "tertiary-fixed-dim": "#00deea",
+            "secondary-fixed": "#00f1fd",
+            "tertiary": "#88f6ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Space Grotesk"],
+            "body": ["Space Grotesk"],
+            "label": ["Space Grotesk"]
+          }
+        },
+      },
+    }
+  </script>
   <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
     body {
-      box-sizing: border-box;
+      background-image: linear-gradient(rgba(142, 255, 113, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(142, 255, 113, 0.02) 1px, transparent 1px);
+      background-size: 20px 20px;
     }
-    * {
-      font-family: 'Space Grotesk', sans-serif;
+
+    .scanline {
+      background: linear-gradient(to bottom, transparent 50%, rgba(142, 255, 113, 0.02) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
     }
-    .mono {
-      font-family: 'JetBrains Mono', monospace;
+
+    .cursor-blink {
+      animation: blink 1s step-end infinite;
     }
-    html, body {
-      height: 100%;
-      margin: 0;
-      scroll-behavior: smooth;
+
+    @keyframes blink {
+
+      from,
+      to {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
     }
-    .gradient-text {
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+
+    @keyframes shake {
+      0% {
+        transform: translate(1px, 1px) rotate(0deg);
+      }
+
+      10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+      }
+
+      20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+      }
+
+      30% {
+        transform: translate(3px, 2px) rotate(0deg);
+      }
+
+      40% {
+        transform: translate(1px, -1px) rotate(1deg);
+      }
+
+      50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+      }
+
+      60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+      }
+
+      70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+      }
+
+      80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+      }
+
+      90% {
+        transform: translate(1px, 2px) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+      }
     }
-    .skill-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .skill-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
-    }
-    .project-card {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .project-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 50px rgba(99, 102, 241, 0.25);
-      background: linear-gradient(to bottom right, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.8));
-    }
-    .project-card:hover .project-overlay {
-      opacity: 1;
-    }
-    .project-card:hover .project-content {
-      transform: translateY(0);
-    }
-    .project-overlay {
-      transition: opacity 0.4s ease;
-    }
-    .project-content {
-      transform: translateY(20px);
-      transition: transform 0.4s ease;
-    }
-    .nav-link {
-      position: relative;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #6366f1, #a855f7);
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    .floating {
-      animation: floating 3s ease-in-out infinite;
-    }
-    @keyframes floating {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    .pulse-glow {
-      animation: pulseGlow 2s ease-in-out infinite;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-      50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
-    }
-    .stat-card {
-      transition: all 0.3s ease;
-    }
-    .stat-card:hover {
-      transform: scale(1.05);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-      transition: all 0.3s ease;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-    }
-    .btn-secondary {
-      transition: all 0.3s ease;
-    }
-    .btn-secondary:hover {
-      background: rgba(99, 102, 241, 0.1);
-      border-color: #6366f1;
-    }
-    .contact-card {
-      transition: all 0.3s ease;
-    }
-    .contact-card:hover {
-      transform: translateY(-5px);
-      border-color: #6366f1;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #6366f1;
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+
+    .shake-effect {
+      animation: shake 0.2s infinite;
     }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full">
-  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);"><!-- Navigation -->
-   <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-opacity-80" style="background: rgba(15, 15, 26, 0.9);">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-     <div class="flex items-center justify-between"><a href="#inicio" class="text-xl font-bold gradient-text">Roy Rebuffo Tabacman</a>
-      <div class="hidden md:flex items-center gap-8"><a href="#inicio" class="nav-link text-gray-300 hover:text-white text-sm">Home</a> <a href="#sobre-mi" class="nav-link text-gray-300 hover:text-white text-sm">About</a> <a href="#habilidades" class="nav-link text-gray-300 hover:text-white text-sm">Skills</a> <a href="#proyectos" class="nav-link text-gray-300 hover:text-white text-sm">Projects</a> <a href="#contacto" class="nav-link text-gray-300 hover:text-white text-sm">Contact</a>
-      </div><button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white">
-       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-       </svg></button>
-     </div><!-- Mobile Menu -->
-     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-      <div class="flex flex-col gap-4"><a href="#inicio" class="text-gray-300 hover:text-white">Home</a> <a href="#sobre-mi" class="text-gray-300 hover:text-white">About</a> <a href="#habilidades" class="text-gray-300 hover:text-white">Skills</a> <a href="#proyectos" class="text-gray-300 hover:text-white">Projects</a> <a href="#contacto" class="text-gray-300 hover:text-white">Contact</a>
-      </div>
-     </div>
+</head>
+
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+  <div class="fixed inset-0 scanline z-[9999]"></div>
+  <!-- TopNavBar -->
+  <header
+    class="flex justify-between items-center px-6 h-16 w-full border-b border-primary/20 bg-[#0e0e0e] bg-gradient-to-b from-[#1a1a1a] to-[#0e0e0e] sticky top-0 z-50">
+    <div class="flex items-center gap-4">
+      <span class="text-lg font-bold text-primary uppercase font-headline tracking-tighter">/home/roy/portfolio</span>
     </div>
-   </nav><!-- Hero Section -->
-   <section id="inicio" class="min-h-screen flex items-center justify-center px-6 pt-20">
-    <div class="max-w-7xl mx-auto w-full">
-     <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
-      <div class="flex-1 text-center lg:text-left">
-       <p class="mono text-indigo-400 text-sm mb-4 tracking-wider">// Welcome to my portfolio</p>
-       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Hi, I'm <span id="hero-name" class="gradient-text">Roy Rebuffo Tabacman</span></h1>
-       <h2 id="hero-role" class="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">Full Stack Developer</h2>
-       <p id="hero-description" class="text-gray-400 text-lg max-w-xl mb-8 leading-relaxed">Passionate about building incredible digital experiences with clean code and elegant design</p>
-       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"><a href="#proyectos" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-center"> View Projects </a> <a href="#contacto" class="btn-secondary px-8 py-4 rounded-xl text-gray-300 font-semibold border-2 border-gray-600 text-center"> Contact Me </a>
-       </div>
-      </div>
-      <div class="flex-1 flex justify-center">
-       <div class="relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full blur-3xl opacity-30"></div>
-        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full pulse-glow overflow-hidden border-4 border-indigo-500/30"><img src="https://raw.githubusercontent.com/Roy-Rebuffo/Roy-Rebuffo/main/RoyRebuffo_pic.png" alt="Roy Rebuffo Tabacman" class="w-full h-full object-cover" onerror="this.style.display='none'; this.alt='Imagen no disponible';">
-        </div>
-        <div class="absolute -top-4 -right-4 floating">
-         <div class="bg-indigo-500/20 backdrop-blur-sm rounded-xl p-3 border border-indigo-500/30"><span class="text-2xl">⚡</span>
-         </div>
-        </div>
-        <div class="absolute -bottom-4 -left-4 floating" style="animation-delay: 1s;">
-         <div class="bg-purple-500/20 backdrop-blur-sm rounded-xl p-3 border border-purple-500/30"><span class="text-2xl">🚀</span>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- About Section -->
-   <section id="sobre-mi" class="py-24 px-6">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <p class="mono text-indigo-400 text-sm mb-2">// Get to know me</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-white">About Me</h2>
-     </div>
-     <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div>
-       <p id="about-text" class="text-gray-400 text-lg leading-relaxed mb-8">I'm a Full Stack Developer with 1 year of hands-on experience building web applications and software solutions. I work primarily with Java, Python, JavaScript, and modern frameworks like React and FastAPI. I enjoy building functional, well-structured projects and continuously expanding my skill set.</p>
-       <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-sm">Problem Solver</span> <span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30 text-sm">Clean Code</span> <span class="px-4 py-2 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/30 text-sm">BackEnd Lover</span>
-       </div>
-      </div>
-      <div class="grid grid-cols-2 gap-6">
-       <div class="stat-card bg-gradient-to-br from-indigo-500/10 to-purple-500/10 backdrop-blur-sm rounded-2xl p-8 border border-indigo-500/20 text-center">
-        <div class="text-5xl font-bold gradient-text mb-2">
-         15+
-        </div>
-        <div class="text-gray-400">
-         Projects
-        </div>
-       </div>
-       <div class="stat-card bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 text-center">
-        <div class="text-5xl font-bold gradient-text mb-2">
-         1+
-        </div>
-        <div class="text-gray-400">
-         Years of Experience
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Skills Section -->
-   <section id="habilidades" class="py-24 px-6" style="background: rgba(0,0,0,0.2);">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <p class="mono text-indigo-400 text-sm mb-2">// My tech stack</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-white">Skills</h2>
-     </div>
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-6"><!-- Java -->
-      <div class="skill-card bg-gradient-to-br from-red-500/10 to-orange-500/10 backdrop-blur-sm rounded-2xl p-6 border border-red-500/20 text-center">
-       <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-red-500/20 flex items-center justify-center">
-        <svg class="w-10 h-10" viewbox="0 0 24 24" fill="none"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218" fill="#5382A1" /> <path d="M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0 0-8.216 2.051-4.292 6.573" fill="#E76F00" /> <path d="M19.33 20.504s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892M17.116 17.584c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0-.001.07-.062.09-.118" fill="#5382A1" /> <path d="M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.888 4.832-.001 6.836-2.274-2.053-3.943-3.858-2.824-5.539 1.644-2.469 6.197-3.665 5.19-7.627" fill="#E76F00" /> <path d="M9.734 23.924c4.322.277 10.959-.153 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0-.001.553.457 3.393.639" fill="#5382A1" />
-        </svg>
-       </div>
-       <h3 class="text-white font-semibold text-lg">Java</h3>
-      </div><!-- Git -->
-      <div class="skill-card bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-2xl p-6 border border-orange-500/20 text-center">
-       <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-orange-500/20 flex items-center justify-center">
-        <svg class="w-10 h-10" viewbox="0 0 24 24" fill="#F05032"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187" />
-        </svg>
-       </div>
-       <h3 class="text-white font-semibold text-lg">GIT</h3>
-      </div><!-- SQL -->
-      <div class="skill-card bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20 text-center">
-       <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-blue-500/20 flex items-center justify-center">
-        <svg class="w-10 h-10" viewbox="0 0 24 24" fill="#00758F"><path d="M12 2C6.477 2 2 3.79 2 6v12c0 2.21 4.477 4 10 4s10-1.79 10-4V6c0-2.21-4.477-4-10-4zm0 2c4.418 0 8 1.343 8 3s-3.582 3-8 3-8-1.343-8-3 3.582-3 8-3zM4 10.29C5.797 11.36 8.733 12 12 12s6.203-.64 8-1.71V14c0 1.657-3.582 3-8 3s-8-1.343-8-3v-3.71zM4 16.29C5.797 17.36 8.733 18 12 18s6.203-.64 8-1.71V18c0 1.657-3.582 3-8 3s-8-1.343-8-3v-1.71z" />
-        </svg>
-       </div>
-       <h3 class="text-white font-semibold text-lg">SQL</h3>
-      </div><!-- Python -->
-      <div class="skill-card bg-gradient-to-br from-yellow-500/10 to-blue-500/10 backdrop-blur-sm rounded-2xl p-6 border border-yellow-500/20 text-center">
-       <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-yellow-500/20 flex items-center justify-center">
-        <svg class="w-10 h-10" viewbox="0 0 24 24" fill="url(#pythonGrad)"><defs>
-          <lineargradient id="pythonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-           <stop offset="0%" style="stop-color:#3776AB" />
-           <stop offset="100%" style="stop-color:#FFD43B" />
-          </lineargradient>
-         </defs> <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.96 3.403 5.96h2.03v-2.867s-.109-3.42 3.35-3.42h5.766s3.24.052 3.24-3.148V3.202S18.28 0 11.914 0zM8.708 1.85c.578 0 1.046.47 1.046 1.052 0 .58-.468 1.051-1.046 1.051-.579 0-1.046-.47-1.046-1.051 0-.582.467-1.052 1.046-1.052z" /> <path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121s3.9.445 3.9-5.735c0-6.18-3.403-5.96-3.403-5.96h-2.03v2.867s.109 3.42-3.35 3.42H9.451s-3.24-.052-3.24 3.148v5.292S5.72 24 12.086 24zm3.206-1.85c-.578 0-1.046-.47-1.046-1.052 0-.58.468-1.051 1.046-1.051.579 0 1.046.47 1.046 1.051 0 .582-.467 1.052-1.046 1.052z" />
-        </svg>
-       </div>
-       <h3 class="text-white font-semibold text-lg">Python</h3>
-      </div><!-- JavaScript -->
-      <div class="skill-card bg-gradient-to-br from-yellow-500/10 to-yellow-600/10 backdrop-blur-sm rounded-2xl p-6 border border-yellow-500/20 text-center">
-       <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-yellow-500/20 flex items-center justify-center">
-        <svg class="w-10 h-10" viewbox="0 0 24 24" fill="#F7DF1E"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z" />
-        </svg>
-       </div>
-       <h3 class="text-white font-semibold text-lg">JavaScript</h3>
-      </div><!-- HTML -->
-      <div class="skill-card bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-2xl p-6 border border-orange-500/20 text-center">
-       <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-orange-500/20 flex items-center justify-center">
-        <svg class="w-10 h-10" viewbox="0 0 24 24" fill="#E34F26"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" />
-        </svg>
-       </div>
-       <h3 class="text-white font-semibold text-lg">HTML</h3>
-      </div><!-- CSS -->
-      <div class="skill-card bg-gradient-to-br from-blue-500/10 to-indigo-500/10 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20 text-center">
-       <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-blue-500/20 flex items-center justify-center">
-        <svg class="w-10 h-10" viewbox="0 0 24 24" fill="#1572B6"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" />
-        </svg>
-       </div>
-       <h3 class="text-white font-semibold text-lg">CSS</h3>
-      </div><!-- Android Studio -->
-      <div class="skill-card bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm rounded-2xl p-6 border border-green-500/20 text-center">
-       <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-green-500/20 flex items-center justify-center">
-        <svg class="w-10 h-10" viewbox="0 0 24 24" fill="#3DDC84"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z" />
-        </svg>
-       </div>
-       <h3 class="text-white font-semibold text-lg">Android Studio</h3>
-      </div>
-     </div>
-    </div>
-   </section><!-- Projects Section -->
-   <section id="proyectos" class="py-24 px-6">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <p class="mono text-indigo-400 text-sm mb-2">// My work</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-white">Featured Projects</h2>
-     </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Barbershop ERP -->
-      <div class="project-card relative rounded-2xl overflow-hidden border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/50">
-       <div class="aspect-video bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-        <svg class="w-20 h-20 text-purple-400" viewbox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm15 0h-2v3h-3v2h3v3h2v-3h3v-2h-3v-3z" /> <rect x="5" y="5" width="4" height="4" fill="currentColor" /> <rect x="15" y="5" width="4" height="4" fill="currentColor" /> <rect x="5" y="15" width="4" height="4" fill="currentColor" />
-        </svg>
-       </div>
-       <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 flex flex-col justify-end p-6">
-        <div class="project-content">
-         <h3 class="text-xl font-bold text-white mb-2">Barbershop ERP</h3>
-         <p class="text-gray-300 text-sm mb-4">Complete ERP system for barbershop management including service and product administration.</p>
-         <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">Python</span>
-         </div><a href="https://github.com/Roy-Rebuffo/Trabajo-Grupal-Python" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-          <svg class="w-4 h-4" viewbox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg> View Code </a>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="text-xl font-bold text-white mb-2">Barbershop ERP</h3>
-        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">Python</span>
-        </div>
-       </div>
-      </div><!-- FinSight -->
-      <div class="project-card relative rounded-2xl overflow-hidden border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/50">
-       <div class="aspect-video bg-gradient-to-br from-indigo-500/20 to-blue-500/20 flex items-center justify-center">
-        <svg class="w-20 h-20 text-indigo-400" viewbox="0 0 24 24" fill="currentColor"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/>
-        </svg>
-       </div>
-       <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 flex flex-col justify-end p-6">
-        <div class="project-content">
-         <h3 class="text-xl font-bold text-white mb-2">FinSight — AI Portfolio Analyst</h3>
-         <p class="text-gray-300 text-sm mb-4">Full-stack AI-powered investment portfolio analyst. Queries investments in real time, fetches live market data, and calculates quantitative risk metrics through a LangGraph conversational agent.</p>
-         <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs">FastAPI</span> <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs">React</span> <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs">LangGraph</span> <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs">PostgreSQL</span> <span class="px-3 py-1 rounded-full bg-gray-500/20 text-gray-300 text-xs">Docker</span>
-         </div><a href="https://github.com/Roy-Rebuffo/FinSight" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-          <svg class="w-4 h-4" viewbox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg> View Code </a>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="text-xl font-bold text-white mb-2">FinSight — AI Portfolio Analyst</h3>
-        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs">FastAPI</span> <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs">React</span> <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs">LangGraph</span> <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs">PostgreSQL</span> <span class="px-3 py-1 rounded-full bg-gray-500/20 text-gray-300 text-xs">Docker</span>
-        </div>
-       </div>
-      </div><!-- mini_Jira -->
-      <div class="project-card relative rounded-2xl overflow-hidden border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/50">
-       <div class="aspect-video bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
-        <svg class="w-20 h-20 text-blue-400" viewbox="0 0 24 24" fill="currentColor"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.72L13 17v5l5-3c3.12-1.76 5-5.03 5-8.97.02-5.46-3.97-9.97-10-10.98zM11 2.05C4.97 3.06 1 7.57 1 13.03c0 3.94 1.88 7.21 5 8.97l5 3v-5l-2.28 1.7C6.81 19.07 5 16.25 5 13.03c0-4.08 3.05-7.44 7-7.93V2.05z"/>
-        </svg>
-       </div>
-       <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 flex flex-col justify-end p-6">
-        <div class="project-content">
-         <h3 class="text-xl font-bold text-white mb-2">mini_Jira — Task Manager</h3>
-         <p class="text-gray-300 text-sm mb-4">A personal task manager inspired by Jira. Features JWT authentication, Kanban-style dashboard, and full task CRUD. Built to learn modern full-stack development.</p>
-         <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs">FastAPI</span> <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs">React</span> <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs">PostgreSQL</span> <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">JWT</span>
-         </div><a href="https://github.com/Roy-Rebuffo/mini_Jira" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-          <svg class="w-4 h-4" viewbox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg> View Code </a>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="text-xl font-bold text-white mb-2">mini_Jira — Task Manager</h3>
-        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs">FastAPI</span> <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs">React</span> <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs">PostgreSQL</span> <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">JWT</span>
-        </div>
-       </div>
-      </div><!-- SweetDash -->
-      <div class="project-card relative rounded-2xl overflow-hidden border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/50">
-       <div class="aspect-video bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center">
-        <svg class="w-20 h-20 text-pink-400" viewbox="0 0 24 24" fill="currentColor"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-8.01-15.03-8.01-15.03 0h15.03zM1.02 17h15v2h-15z"/>
-        </svg>
-       </div>
-       <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 flex flex-col justify-end p-6">
-        <div class="project-content">
-         <h3 class="text-xl font-bold text-white mb-2">SweetDash — Bakery Manager</h3>
-         <p class="text-gray-300 text-sm mb-4">Bakery management application that automates order tracking, customer management, product inventory, and stock control — replacing manual calendar and spreadsheet workflows.</p>
-         <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 text-xs">Java</span> <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">JavaScript</span>
-         </div><a href="https://github.com/Roy-Rebuffo/SweetDash" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-          <svg class="w-4 h-4" viewbox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg> View Code </a>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="text-xl font-bold text-white mb-2">SweetDash — Bakery Manager</h3>
-        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 text-xs">Java</span> <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">JavaScript</span>
-        </div>
-       </div>
-      </div><!-- Planning Agent -->
-      <div class="project-card relative rounded-2xl overflow-hidden border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/50">
-       <div class="aspect-video bg-gradient-to-br from-green-500/20 to-teal-500/20 flex items-center justify-center">
-        <svg class="w-20 h-20 text-green-400" viewbox="0 0 24 24" fill="currentColor"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-        </svg>
-       </div>
-       <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 flex flex-col justify-end p-6">
-        <div class="project-content">
-         <h3 class="text-xl font-bold text-white mb-2">Planning Agent — AI Scheduler</h3>
-         <p class="text-gray-300 text-sm mb-4">Intelligent weekly planning agent that analyses a to-do list and generates a prioritised weekly schedule using AI. Built with LangChain, Groq LLaMA, and Streamlit.</p>
-         <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">Python</span> <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs">LangChain</span> <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs">Streamlit</span> <span class="px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 text-xs">Groq</span>
-         </div><a href="https://github.com/Roy-Rebuffo/Planning_Agent" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-          <svg class="w-4 h-4" viewbox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg> View Code </a>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="text-xl font-bold text-white mb-2">Planning Agent — AI Scheduler</h3>
-        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">Python</span> <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs">LangChain</span> <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs">Streamlit</span> <span class="px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 text-xs">Groq</span>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Contact Section -->
-   <section id="contacto" class="py-24 px-6" style="background: rgba(0,0,0,0.2);">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <p class="mono text-indigo-400 text-sm mb-2">// Let's connect</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Contact</h2>
-      <h3 class="text-2xl text-gray-300">Let's Talk!</h3>
-     </div>
-     <div class="grid lg:grid-cols-2 gap-12">
-      <div>
-       <p class="text-gray-400 text-lg mb-8 leading-relaxed">I'm always open to new opportunities and interesting projects. Feel free to reach out if you want to collaborate or just talk tech.</p>
-       <div class="space-y-6"><!-- Email --> <a href="mailto:rebufforoy@gmail.com" class="contact-card flex items-center gap-4 p-4 rounded-xl border border-gray-700/50 bg-gray-800/30 hover:bg-gray-800/50">
-         <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
-          <svg class="w-6 h-6 text-indigo-400" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /> <polyline points="22,6 12,13 2,6" />
-          </svg>
-         </div>
-         <div>
-          <div class="text-gray-500 text-sm">
-           Email
+    <nav class="hidden md:flex gap-8">
+      <a class="text-primary border-b-2 border-primary pb-1 font-space-grotesk tracking-tighter uppercase text-sm cursor-pointer active:scale-95 transition-colors"
+        href="#root">root</a>
+      <a class="text-slate-500 hover:text-primary hover:bg-primary/10 px-2 transition-colors font-space-grotesk tracking-tighter uppercase text-sm cursor-pointer active:scale-95"
+        href="#deps">deps</a>
+      <a class="text-slate-500 hover:text-primary hover:bg-primary/10 px-2 transition-colors font-space-grotesk tracking-tighter uppercase text-sm cursor-pointer active:scale-95"
+        href="#apps">apps</a>
+      <a class="text-slate-500 hover:text-primary hover:bg-primary/10 px-2 transition-colors font-space-grotesk tracking-tighter uppercase text-sm cursor-pointer active:scale-95"
+        href="#sys">sys</a>
+    </nav>
+    <div class="flex items-center gap-4 min-w-[100px]"></div>
+  </header>
+  <div class="flex min-h-screen">
+    <!-- SideNavBar -->
+    <aside
+      class="hidden md:flex flex-col h-[calc(100vh-4rem)] sticky top-16 w-64 border-r border-primary/20 bg-[#0e0e0e] shadow-[5px_0_20px_rgba(142,255,113,0.05)] pb-8 z-40">
+      <div class="p-6 border-b border-primary/10">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 border border-primary/40 bg-surface-container-highest flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-xl"
+              data-icon="developer_board">developer_board</span>
           </div>
-          <div id="contact-email-display" class="text-white">
-           rebufforoy@gmail.com
+          <div>
+            <div class="text-primary font-black font-space-grotesk text-xs tracking-wider">KERNEL_ARCH</div>
+            <div class="text-primary/60 text-[10px] font-mono">v2.0.4-stable</div>
           </div>
-         </div></a> <!-- GitHub --> <a href="https://github.com/Roy-Rebuffo" target="_blank" rel="noopener noreferrer" class="contact-card flex items-center gap-4 p-4 rounded-xl border border-gray-700/50 bg-gray-800/30 hover:bg-gray-800/50">
-         <div class="w-12 h-12 rounded-xl bg-gray-500/20 flex items-center justify-center">
-          <svg class="w-6 h-6 text-gray-400" viewbox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg>
-         </div>
-         <div>
-          <div class="text-gray-500 text-sm">
-           GitHub
-          </div>
-          <div class="text-white">
-           github.com/Roy-Rebuffo
-          </div>
-         </div></a> <!-- LinkedIn --> <a href="https://www.linkedin.com/in/royrebuffo/" target="_blank" rel="noopener noreferrer" class="contact-card flex items-center gap-4 p-4 rounded-xl border border-gray-700/50 bg-gray-800/30 hover:bg-gray-800/50">
-         <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
-          <svg class="w-6 h-6 text-blue-400" viewbox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-          </svg>
-         </div>
-         <div>
-          <div class="text-gray-500 text-sm">
-           LinkedIn
-          </div>
-          <div class="text-white">
-           linkedin.com/in/royrebuffo
-          </div>
-         </div></a>
-       </div>
-      </div><!-- Contact Form -->
-      <div class="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-gray-700/50">
-       <form id="contact-form" class="space-y-6">
-        <div><label for="name" class="block text-gray-300 text-sm mb-2">Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all" placeholder="Your name">
         </div>
-        <div><label for="email" class="block text-gray-300 text-sm mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all" placeholder="you@email.com">
-        </div>
-        <div><label for="message" class="block text-gray-300 text-sm mb-2">Message</label> <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all resize-none" placeholder="Your message..."></textarea>
-        </div><button type="submit" class="w-full btn-primary px-8 py-4 rounded-xl text-white font-semibold flex items-center justify-center gap-2"> <span id="btn-text">Send Message</span>
-         <svg id="btn-icon" class="w-5 h-5" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13" /> <polygon points="22 2 15 22 11 13 2 9 22 2" />
-         </svg></button>
-        <div id="form-message" class="hidden text-center py-3 rounded-xl"></div>
-       </form>
+        <button id="btn-build"
+          class="w-full py-2 bg-primary/10 text-primary border border-primary/20 font-mono text-xs hover:bg-primary hover:text-on-primary transition-all duration-200">
+          &gt; EXECUTE_BUILD
+        </button>
       </div>
-     </div>
-    </div>
-   </section><!-- Footer -->
-   <footer class="py-8 px-6 border-t border-gray-800">
-    <div class="max-w-7xl mx-auto text-center">
-     <p class="text-gray-500">© 2025 Roy Rebuffo Tabacman. Made with 💜</p>
-    </div>
-   </footer>
+      <nav class="flex-1 overflow-y-auto py-4">
+        <div class="px-6 mb-2 text-[10px] text-primary/40 font-bold tracking-widest uppercase">Navigation</div>
+        <a href="#root"
+          class="block bg-primary text-[#0e0e0e] font-bold px-6 py-2 flex items-center gap-3 cursor-pointer transition-all duration-200">
+          <span class="material-symbols-outlined text-sm" data-icon="folder">folder</span>
+          <span class="text-xs font-space-grotesk uppercase">ROOT</span>
+        </a>
+        <a href="#deps"
+          class="block text-primary/60 hover:text-primary hover:bg-primary/10 px-6 py-2 flex items-center gap-3 cursor-pointer transition-all duration-150">
+          <span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+          <span class="text-xs font-space-grotesk uppercase">DEPS</span>
+        </a>
+        <a href="#apps"
+          class="block text-primary/60 hover:text-primary hover:bg-primary/10 px-6 py-2 flex items-center gap-3 cursor-pointer transition-all duration-150">
+          <span class="material-symbols-outlined text-sm" data-icon="developer_board">developer_board</span>
+          <span class="text-xs font-space-grotesk uppercase">APPS</span>
+        </a>
+        <a href="#sys"
+          class="block text-primary/60 hover:text-primary hover:bg-primary/10 px-6 py-2 flex items-center gap-3 cursor-pointer transition-all duration-150">
+          <span class="material-symbols-outlined text-sm"
+            data-icon="settings_input_component">settings_input_component</span>
+          <span class="text-xs font-space-grotesk uppercase">SYS</span>
+        </a>
+        <div class="mt-8 px-6 mb-2 text-[10px] text-primary/40 font-bold tracking-widest uppercase">Files</div>
+        <a href="Roy_Rebuffo_CV.pdf" download="Roy_Rebuffo_CV.pdf"
+          class="px-6 py-1 text-xs text-primary/60 hover:text-primary flex items-center gap-2 cursor-pointer transition-colors">
+          <span class="material-symbols-outlined text-[14px]" data-icon="description">description</span> README.md
+        </a>
+
+        <div class="mt-8 px-6 mb-2 text-[10px] text-primary/40 font-bold tracking-widest uppercase">Links</div>
+        <a href="https://github.com/Roy-Rebuffo" target="_blank"
+          class="px-6 py-1 text-xs text-primary/60 hover:text-primary flex items-center gap-2 cursor-pointer transition-colors">
+          <span class="material-symbols-outlined text-[14px]" data-icon="code">code</span> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/royrebuffo/" target="_blank"
+          class="px-6 py-1 text-xs text-primary/60 hover:text-primary flex items-center gap-2 cursor-pointer transition-colors">
+          <span class="material-symbols-outlined text-[14px]" data-icon="person_search">person_search</span> LinkedIn
+        </a>
+      </nav>
+      <div class="p-4 border-t border-primary/10">
+        <div id="btn-quit"
+          class="text-primary/60 hover:text-error hover:bg-error/10 px-4 py-2 flex items-center gap-3 cursor-pointer transition-all duration-200">
+          <span class="material-symbols-outlined text-sm" data-icon="power_settings_new">power_settings_new</span>
+          <span class="text-xs font-space-grotesk uppercase">QUIT</span>
+        </div>
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 bg-surface-dim p-6 md:p-12 pb-20 overflow-x-hidden">
+      <!-- Hero Terminal -->
+      <section id="root" class="max-w-5xl mx-auto mb-20 scroll-mt-20">
+        <div class="border border-outline-variant bg-surface-container-lowest shadow-[0_0_30px_rgba(142,255,113,0.03)]">
+          <div
+            class="flex items-center justify-between bg-surface-container-highest px-4 py-2 border-b border-outline-variant">
+            <div class="flex gap-2">
+              <span class="text-[10px] font-mono text-error">X</span>
+              <span class="text-[10px] font-mono text-primary">-</span>
+              <span class="text-[10px] font-mono text-secondary">+</span>
+            </div>
+            <div class="text-[10px] text-on-surface-variant font-mono tracking-widest uppercase">SESSION: BASH_ZSH_ROOT
+            </div>
+            <div class="w-12"></div>
+          </div>
+          <div class="p-6 md:p-10 font-mono text-primary leading-relaxed">
+            <div class="mb-4 flex items-center gap-2">
+              <span class="text-primary-dim">roy@portfolio:~$</span>
+              <span class="text-on-surface">cat README.md</span>
+            </div>
+            <div class="space-y-6 text-on-surface/90">
+              <h1 class="text-4xl md:text-6xl font-bold font-headline tracking-tighter text-primary">HELLO_WORLD.v1</h1>
+              <p class="max-w-2xl text-lg text-on-surface-variant">
+                Passionate about building incredible digital experiences with clean code and elegant design. I'm a <span
+                  class="text-primary">Full Stack Developer</span> with 1 year of hands-on experience building web
+                applications and software solutions. I work primarily with Java, Python, JavaScript, and modern
+                frameworks like React and FastAPI. I enjoy building functional, well-structured projects and
+                continuously expanding my skill set.
+              </p>
+              <div class="flex flex-wrap gap-4 mt-8">
+                <div class="border border-primary/30 px-4 py-2 bg-primary/5 flex items-center gap-2">
+                  <span class="w-2 h-2 bg-primary rounded-full"></span>
+                  <span class="text-xs font-bold tracking-widest uppercase">SYSTEM_UPTIME: 99.9%</span>
+                </div>
+                <div class="border border-secondary/30 px-4 py-2 bg-secondary/5 flex items-center gap-2">
+                  <span class="w-2 h-2 bg-secondary rounded-full"></span>
+                  <span class="text-xs font-bold tracking-widest uppercase">LOC_COMMITTED: 240K+</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-8 flex items-center gap-2">
+              <span class="text-primary-dim">roy@portfolio:~$</span>
+              <span class="w-2 h-5 bg-primary cursor-blink"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Tech Stack / Dependencies -->
+      <section id="deps" class="max-w-5xl mx-auto mb-24 scroll-mt-20">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-2xl font-bold font-headline uppercase tracking-widest text-primary">01 //
+            DEPENDENCIES</span>
+          <div class="h-px flex-1 bg-primary/20"></div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-primary/20 border border-primary/20">
+          <div class="bg-surface-container p-6 xl:p-8 group hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined text-primary mb-4 block" data-icon="data_object"
+              style="font-size: 32px;">data_object</span>
+            <div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Backend</div>
+            <div class="text-on-surface font-headline font-bold">Python / Java / Node.js</div>
+          </div>
+          <div class="bg-surface-container p-6 xl:p-8 group hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined text-secondary mb-4 block" data-icon="web"
+              style="font-size: 32px;">web</span>
+            <div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Frontend</div>
+            <div class="text-on-surface font-headline font-bold">React / Tailwind</div>
+          </div>
+          <div class="bg-surface-container p-6 xl:p-8 group hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined text-primary mb-4 block" data-icon="database"
+              style="font-size: 32px;">database</span>
+            <div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Infrastructure</div>
+            <div class="text-on-surface font-headline font-bold">Docker</div>
+          </div>
+          <div class="bg-surface-container p-6 xl:p-8 group hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined text-secondary mb-4 block" data-icon="security"
+              style="font-size: 32px;">security</span>
+            <div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Security</div>
+            <div class="text-on-surface font-headline font-bold">JWT / OAuth</div>
+          </div>
+          <div class="bg-surface-container p-6 xl:p-8 group hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined text-primary mb-4 block" data-icon="account_tree"
+              style="font-size: 32px;">account_tree</span>
+            <div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Version Control</div>
+            <div class="text-on-surface font-headline font-bold">Git / GitHub</div>
+          </div>
+        </div>
+      </section>
+      <!-- Projects Grid -->
+      <section id="apps" class="max-w-5xl mx-auto mb-24 scroll-mt-20">
+        <div class="flex items-center gap-4 mb-10">
+          <span class="text-2xl font-bold font-headline uppercase tracking-widest text-primary">02 //
+            PROJECTS</span>
+          <div class="h-px flex-1 bg-primary/20"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Mini-Jira -->
+          <a href="https://github.com/Roy-Rebuffo/mini_Jira" target="_blank"
+            class="block border border-outline-variant p-6 bg-surface-container-low hover:border-primary/50 cursor-pointer transition-colors relative group">
+            <div class="absolute top-0 right-0 p-2 text-[10px] font-mono text-primary/30 uppercase">BUILD_SUCCESSFUL
+            </div>
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 border border-primary/20 bg-surface flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary" data-icon="task_alt">task_alt</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold font-headline text-primary mb-1">Mini-Jira</h3>
+                <p class="text-sm text-on-surface-variant font-mono">Agile lifecycle manager for micro-teams.</p>
+              </div>
+            </div>
+            <div
+              class="bg-surface-container-lowest p-4 font-mono text-xs text-secondary/80 mb-6 border-l-2 border-secondary">
+              <span class="text-on-surface-variant">// repo_stats:</span><br />
+              - STACK: Python, FastAPI, Langchain, React, PostgreSQL, JWT, Groq
+            </div>
+            <div
+              class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-tighter text-primary group-hover:underline mt-auto">
+              &gt; git checkout master
+              <span class="material-symbols-outlined text-sm"
+                data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+            </div>
+          </a>
+          <!-- Barbershop ERP -->
+          <a href="https://github.com/Roy-Rebuffo/Trabajo-Grupal-Python" target="_blank"
+            class="block border border-outline-variant p-6 bg-surface-container-low hover:border-primary/50 cursor-pointer transition-colors relative group">
+            <div class="absolute top-0 right-0 p-2 text-[10px] font-mono text-primary/30 uppercase">SYSTEM_ONLINE
+            </div>
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 border border-primary/20 bg-surface flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold font-headline text-primary mb-1">Barbershop ERP</h3>
+                <p class="text-sm text-on-surface-variant font-mono">Barbershop ERP &amp; Management System</p>
+              </div>
+            </div>
+            <div
+              class="bg-surface-container-lowest p-4 font-mono text-xs text-primary/80 mb-6 border-l-2 border-primary">
+              <span class="text-on-surface-variant">// core_engine:</span><br />
+              - STACK: Python, Webview
+            </div>
+            <div
+              class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-tighter text-primary group-hover:underline mt-auto">
+              &gt; git checkout dev_branch
+              <span class="material-symbols-outlined text-sm"
+                data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+            </div>
+          </a>
+          <!-- Planning Agent -->
+          <a href="https://github.com/Roy-Rebuffo/Planning_Agent" target="_blank"
+            class="block border border-outline-variant p-6 bg-surface-container-low hover:border-primary/50 cursor-pointer transition-colors relative group">
+            <div class="absolute top-0 right-0 p-2 text-[10px] font-mono text-primary/30 uppercase">STANDBY_MODE
+            </div>
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 border border-primary/20 bg-surface flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary" data-icon="smart_toy">smart_toy</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold font-headline text-primary mb-1">Planning Agent</h3>
+                <p class="text-sm text-on-surface-variant font-mono">Intelligent weekly planning agent.</p>
+              </div>
+            </div>
+            <div
+              class="bg-surface-container-lowest p-4 font-mono text-xs text-secondary/80 mb-6 border-l-2 border-secondary">
+              <span class="text-on-surface-variant">// core_modules:</span><br />
+              - STACK: Python, Langchain, Streamlit, Groq
+            </div>
+            <div
+              class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-tighter text-primary group-hover:underline mt-auto">
+              &gt; sys.run('planning_agent.py')
+              <span class="material-symbols-outlined text-sm"
+                data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+            </div>
+          </a>
+          <!-- SweetDash -->
+          <a href="https://github.com/Roy-Rebuffo/SweetDash" target="_blank"
+            class="block border border-outline-variant p-6 bg-surface-container-low hover:border-secondary/50 cursor-pointer transition-colors relative group">
+            <div class="absolute top-0 right-0 p-2 text-[10px] font-mono text-secondary/30 uppercase">SYSTEM_ONLINE
+            </div>
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 border border-secondary/20 bg-surface flex items-center justify-center">
+                <span class="material-symbols-outlined text-secondary" data-icon="bakery_dining">bakery_dining</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold font-headline text-secondary mb-1">SweetDash</h3>
+                <p class="text-sm text-on-surface-variant font-mono">Automated Bakery Management System.</p>
+              </div>
+            </div>
+            <div
+              class="bg-surface-container-lowest p-4 font-mono text-xs text-primary/80 mb-6 border-l-2 border-primary">
+              <span class="text-on-surface-variant">// stack_trace:</span><br />
+              - STACK: Java, SpringBoot, React
+            </div>
+            <div
+              class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-tighter text-secondary group-hover:underline mt-auto">
+              &gt; compile &amp;&amp; start node
+              <span class="material-symbols-outlined text-sm"
+                data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+            </div>
+          </a>
+          <!-- FinSight -->
+          <a href="https://github.com/Roy-Rebuffo/FinSight" target="_blank"
+             class="block border border-outline-variant p-6 bg-surface-container-low md:col-span-2 cursor-pointer hover:border-secondary/50 transition-colors group">
+            <div class="grid md:grid-cols-3 gap-8 h-full">
+              <div class="md:col-span-1">
+                <img
+                  class="w-full h-48 object-cover grayscale brightness-50 border border-secondary/20 mb-4 group-hover:grayscale-0 transition-all duration-500"
+                  data-alt="Technical data visualization dashboard with green glowing lines and high-contrast terminal interface style"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-YEVaN9IvX5ik73BOFveUf9SWnBIkB0LNlSia9HZ_xQQs-0k32XRs0r_izwhyYD-Je37tqlQZVOpXLXGC9PHh4D9UCNWhvQoofayy4hCznD0rbXt6moBMsFNVpincuvEqCPQOJ0ENLIYGogwW4qjGVZP6frwViOEMPtS7erv_qy_QvqMFHi5KuNrzP6PxOs62qJTD332f5vM064Ssp2dFasRrR2xjUcrBTdRj2a5uboISQqSGXqfuAYd_rN84Px6l-LvWJHMWXYhU" />
+                <h3 class="text-xl font-bold font-headline text-secondary">FinSight</h3>
+                <p class="text-xs text-on-surface-variant font-mono uppercase tracking-widest mt-2">AI-driven predictive market analytics</p>
+              </div>
+              <div class="md:col-span-2 flex flex-col justify-between">
+                <div>
+                  <div class="font-mono text-sm text-on-surface/80 leading-relaxed mb-6">
+                     Full-stack AI-powered investment portfolio analyst. Queries investments in real time, fetches live market data, and calculates quantitative risk metrics through a LangGraph conversational agent.
+                  </div>
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-mono text-secondary border border-secondary/20">DOCKER</span>
+                    <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-mono text-secondary border border-secondary/20">PYTHON</span>
+                    <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-mono text-secondary border border-secondary/20">FASTAPI</span>
+                    <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-mono text-secondary border border-secondary/20">REACT</span>
+                    <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-mono text-secondary border border-secondary/20">LANGGRAPH</span>
+                    <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-mono text-secondary border border-secondary/20">POSTGRESQL</span>
+                  </div>
+                </div>
+                <div
+                  class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-tighter text-secondary group-hover:underline mt-6">
+                  &gt; git branch -v
+                  <span class="material-symbols-outlined text-sm"
+                    data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section id="sys" class="max-w-5xl mx-auto mb-32 scroll-mt-20">
+        <div class="flex items-center gap-4 mb-10">
+          <span class="text-2xl font-bold font-headline uppercase tracking-widest text-primary">03 //
+            CONTACT_SCRIPT</span>
+          <div class="h-px flex-1 bg-primary/20"></div>
+        </div>
+        <div class="bg-surface-container-lowest border border-outline-variant p-8 md:p-12 relative">
+          <div class="absolute top-4 left-4 font-mono text-[10px] text-on-surface-variant">./scripts/send_mail.sh</div>
+          <div class="mt-4 mb-6 font-mono text-[11px] space-y-1">
+            <div class="flex gap-2 group hover:bg-primary/5 p-1 transition-colors">
+              <span class="text-primary-dim opacity-50">$</span>
+              <a class="text-on-surface-variant hover:text-primary transition-colors"
+                href="mailto:rebufforoy@gmail.com">
+                <span class="text-primary">export</span> EMAIL="<span
+                  class="underline decoration-primary/30 text-on-surface">rebufforoy@gmail.com</span>"
+              </a>
+            </div>
+            <div class="flex gap-2 group hover:bg-primary/5 p-1 transition-colors">
+              <span class="text-primary-dim opacity-50">$</span>
+              <a class="text-on-surface-variant hover:text-primary transition-colors"
+                href="https://github.com/Roy-Rebuffo" target="_blank">
+                <span class="text-primary">export</span> GITHUB="<span
+                  class="underline decoration-primary/30 text-on-surface">github.com/Roy-Rebuffo</span>"
+              </a>
+            </div>
+            <div class="flex gap-2 group hover:bg-primary/5 p-1 transition-colors">
+              <span class="text-primary-dim opacity-50">$</span>
+              <a class="text-on-surface-variant hover:text-primary transition-colors"
+                href="https://www.linkedin.com/in/royrebuffo/" target="_blank">
+                <span class="text-primary">export</span> LINKEDIN="<span
+                  class="underline decoration-primary/30 text-on-surface">linkedin.com/in/royrebuffo</span>"
+              </a>
+            </div>
+          </div>
+          <form id="contact-form" class="space-y-8 mt-2">
+            <div class="grid md:grid-cols-2 gap-12">
+              <div class="space-y-1">
+                <label class="text-[10px] font-bold text-primary uppercase tracking-widest">Sender_Name</label>
+                <input id="name" name="name" required
+                  class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary text-on-surface font-mono py-2 px-0 transition-colors"
+                  placeholder="guest@external_node" type="text" />
+              </div>
+              <div class="space-y-1">
+                <label class="text-[10px] font-bold text-primary uppercase tracking-widest">Return_Address</label>
+                <input id="email" name="email" required
+                  class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary text-on-surface font-mono py-2 px-0 transition-colors"
+                  placeholder="contact@domain.com" type="email" />
+              </div>
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] font-bold text-primary uppercase tracking-widest">Message_Payload</label>
+              <textarea id="message" name="message" required
+                class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary text-on-surface font-mono py-2 px-0 transition-colors resize-none"
+                placeholder="Enter query parameters..." rows="4"></textarea>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center mt-4 gap-4">
+              <div id="form-message" class="hidden text-xs font-mono px-4 py-2 w-full text-center md:text-left"></div>
+              <button class="flex items-center gap-4 group ml-auto flex-shrink-0" type="submit">
+                <span id="btn-text"
+                  class="text-xs font-black uppercase tracking-widest text-primary group-hover:text-primary-fixed transition-colors">EXECUTE
+                  SEND_COMMAND</span>
+                <div
+                  class="w-12 h-12 bg-primary flex items-center justify-center text-on-primary group-hover:scale-110 transition-transform">
+                  <span id="btn-icon" class="material-symbols-outlined" data-icon="send">send</span>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
   </div>
+  <!-- BottomNavBar -->
+  <footer
+    class="fixed bottom-0 left-0 w-full flex justify-between items-center px-4 py-1 h-8 bg-black border-t border-primary/20 z-50">
+    <div class="flex gap-6">
+      <div
+        class="flex items-center gap-2 text-primary font-space-grotesk text-[10px] uppercase tracking-widest bg-primary/20 px-2 py-1">
+        <span class="material-symbols-outlined text-[12px] animate-pulse" data-icon="check_circle">check_circle</span>
+        SYS_READY
+      </div>
+      <div
+        class="hidden md:flex items-center gap-2 text-primary/40 font-space-grotesk text-[10px] uppercase tracking-widest hover:text-primary transition-colors cursor-pointer">
+        <span class="material-symbols-outlined text-[12px]" data-icon="memory">memory</span>
+        NODE_OK [64GB_RAM]
+      </div>
+      <div
+        class="hidden md:flex items-center gap-2 text-primary/40 font-space-grotesk text-[10px] uppercase tracking-widest hover:text-primary transition-colors cursor-pointer">
+        <span class="material-symbols-outlined text-[12px]" data-icon="lan">lan</span>
+        NET_EST [1Gbps]
+      </div>
+    </div>
+    <div
+      class="flex items-center gap-2 text-primary/40 font-space-grotesk text-[10px] uppercase tracking-widest group cursor-pointer">
+      <span class="text-primary-dim">0% ERRORS</span>
+      <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform"
+        data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+      CMD_LINE
+    </div>
+  </footer>
   <script>
-    // Default configuration
-    const defaultConfig = {
-      hero_title: 'Roy Rebuffo Tabacman',
-      hero_subtitle: 'Full Stack Developer',
-      about_description: 'I\'m a Full Stack Developer with 1 year of hands-on experience building web applications and software solutions. I work primarily with Java, Python, JavaScript, and modern frameworks like React and FastAPI. I enjoy building functional, well-structured projects and continuously expanding my skill set.',
-      contact_email: 'rebufforoy@gmail.com',
-      background_color: '#0f0f1a',
-      surface_color: '#1a1a2e',
-      text_color: '#ffffff',
-      primary_action_color: '#6366f1',
-      secondary_action_color: '#8b5cf6',
-      font_family: 'Space Grotesk',
-      font_size: 16
-    };
+    // System Halt Animation (Kernel Panic & CRT Turn Off)
+    const btnQuit = document.getElementById('btn-quit');
+    if (btnQuit) {
+      btnQuit.addEventListener('click', () => {
+        // Freeze interactions
+        document.body.style.pointerEvents = 'none';
 
-    // Initialize SDK
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange: async (config) => {
-          // Update hero section
-          const heroName = document.getElementById('hero-name');
-          if (heroName) heroName.textContent = config.hero_title || defaultConfig.hero_title;
-          
-          const heroRole = document.getElementById('hero-role');
-          if (heroRole) heroRole.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-          
-          // Update about section
-          const aboutText = document.getElementById('about-text');
-          if (aboutText) aboutText.textContent = config.about_description || defaultConfig.about_description;
-          
-          // Update contact email
-          const contactEmailDisplay = document.getElementById('contact-email-display');
-          if (contactEmailDisplay) contactEmailDisplay.textContent = config.contact_email || defaultConfig.contact_email;
+        // 1. Blackout and Static Noise Container
+        const killScreen = document.createElement('div');
+        killScreen.className = 'fixed inset-0 z-[10000] bg-[#050505] flex flex-col items-start justify-start p-8 overflow-hidden';
+        document.body.appendChild(killScreen);
 
-          // Apply font family
-          const fontFamily = config.font_family || defaultConfig.font_family;
-          document.documentElement.style.fontFamily = `${fontFamily}, sans-serif`;
+        // Static scanlines using pure CSS gradient
+        const scanlines = document.createElement('div');
+        scanlines.className = 'absolute inset-0 pointer-events-none opacity-40';
+        scanlines.style.background = 'repeating-linear-gradient(0deg, rgba(8, 255, 8, 0.15) 0px, rgba(8, 255, 8, 0.15) 2px, transparent 2px, transparent 4px)';
+        killScreen.appendChild(scanlines);
 
-          // Apply font size
-          const fontSize = config.font_size || defaultConfig.font_size;
-          document.documentElement.style.fontSize = `${fontSize}px`;
-        },
-        mapToCapabilities: (config) => ({
-          recolorables: [
-            {
-              get: () => config.background_color || defaultConfig.background_color,
-              set: (value) => window.elementSdk.setConfig({ background_color: value })
-            },
-            {
-              get: () => config.surface_color || defaultConfig.surface_color,
-              set: (value) => window.elementSdk.setConfig({ surface_color: value })
-            },
-            {
-              get: () => config.text_color || defaultConfig.text_color,
-              set: (value) => window.elementSdk.setConfig({ text_color: value })
-            },
-            {
-              get: () => config.primary_action_color || defaultConfig.primary_action_color,
-              set: (value) => window.elementSdk.setConfig({ primary_action_color: value })
-            },
-            {
-              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
-              set: (value) => window.elementSdk.setConfig({ secondary_action_color: value })
+        // Glitch flicker animation
+        killScreen.animate([
+            { opacity: 1 }, { opacity: 0.8 }, { opacity: 1 }, { opacity: 0.6 }, { opacity: 1 }
+        ], { duration: 150, iterations: Infinity, direction: 'alternate' });
+
+        // 2. ASCII text typewriter effect
+        const textContainer = document.createElement('div');
+        textContainer.className = 'text-[#00ff00] font-mono whitespace-pre-wrap z-10 text-lg md:text-2xl drop-shadow-[0_0_8px_rgba(0,255,0,0.8)]';
+        killScreen.appendChild(textContainer);
+
+        const lines = [
+            "FATAL ERROR: SYSTEM_HALTED",
+            "Dumping physical memory to disk...",
+            "0x000F4829  [OK]",
+            "0x004F339A  [OK]",
+            "0x0A99B211  [OK]",
+            "MEMORY DUMP COMPLETE.",
+            "SHUTTING DOWN KERNEL..."
+        ];
+
+        let lineIdx = 0;
+        let charIdx = 0;
+        
+        const typeWriter = setInterval(() => {
+            if (lineIdx < lines.length) {
+                if (charIdx === 0) {
+                    textContainer.appendChild(document.createElement('div'));
+                    // Add slight margin to some lines to stagger
+                    if (lineIdx > 1) textContainer.lastChild.style.marginTop = '0.5rem';
+                }
+                const currentLine = lines[lineIdx];
+                textContainer.lastChild.textContent += currentLine.charAt(charIdx);
+                charIdx++;
+                
+                // Add minor random glitch characters occasionally
+                if (Math.random() > 0.95 && charIdx < currentLine.length) {
+                   textContainer.lastChild.textContent += String.fromCharCode(33 + Math.random() * 90);
+                }
+
+                if (charIdx >= currentLine.length) {
+                    // Force exact text at the end of line to fix glitch artifacts
+                    textContainer.lastChild.textContent = currentLine;
+                    charIdx = 0;
+                    lineIdx++;
+                }
+            } else {
+                clearInterval(typeWriter);
+                
+                // 3. CRT TV TURN OFF EFFECT
+                setTimeout(() => {
+                    // Stop flicker
+                    killScreen.getAnimations().forEach(a => a.pause());
+                    killScreen.innerHTML = ''; // Clear text and static
+
+                    // Setup CRT container behavior
+                    killScreen.style.display = 'flex';
+                    killScreen.style.alignItems = 'center';
+                    killScreen.style.justifyContent = 'center';
+                    killScreen.style.background = 'black';
+                    
+                    // The glowing dot / line
+                    const tvLine = document.createElement('div');
+                    tvLine.style.background = '#ffffff';
+                    tvLine.style.boxShadow = '0 0 20px 10px rgba(255,255,255,0.8), 0 0 50px 20px rgba(0,255,0,0.5)';
+                    killScreen.appendChild(tvLine);
+
+                    // CRT Collapse animation (Screen -> Horizontal Line -> Dot -> Fade out)
+                    tvLine.animate([
+                        { width: '100vw', height: '100vh', borderRadius: '0px' },
+                        { width: '100vw', height: '2px', borderRadius: '50%', offset: 0.3 },
+                        { width: '4px', height: '2px', borderRadius: '50%', offset: 0.7 },
+                        { width: '0px', height: '0px', opacity: 0, offset: 1 }
+                    ], {
+                        duration: 800,
+                        easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+                        fill: 'forwards'
+                    });
+
+                    // Close window
+                    setTimeout(() => {
+                        window.close();
+                        // Fallback
+                        document.body.innerHTML = '<div style="background:black; width:100vw; height:100vh; margin:0;"></div>';
+                    }, 1000);
+                }, 1000); // Wait 1s after text finishes reading
             }
-          ],
-          borderables: [],
-          fontEditable: {
-            get: () => config.font_family || defaultConfig.font_family,
-            set: (value) => window.elementSdk.setConfig({ font_family: value })
-          },
-          fontSizeable: {
-            get: () => config.font_size || defaultConfig.font_size,
-            set: (value) => window.elementSdk.setConfig({ font_size: value })
-          }
-        }),
-        mapToEditPanelValues: (config) => new Map([
-          ['hero_title', config.hero_title || defaultConfig.hero_title],
-          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
-          ['about_description', config.about_description || defaultConfig.about_description],
-          ['contact_email', config.contact_email || defaultConfig.contact_email]
-        ])
+        }, 15); // Fast terminal speed
       });
     }
 
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    // Matrix Re-Build Animation
+    const btnBuild = document.getElementById('btn-build');
+    if (btnBuild) {
+      btnBuild.addEventListener('click', () => {
+        const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        const textNodes = [];
+        while (node = walk.nextNode()) {
+          if (
+            node.nodeValue.trim().length > 0 &&
+            node.parentNode.tagName !== 'SCRIPT' &&
+            node.parentNode.tagName !== 'STYLE' &&
+            node.parentNode.id !== 'btn-build'
+          ) {
+            textNodes.push(node);
+          }
+        }
 
-    // Close mobile menu when clicking a link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
+        textNodes.forEach(node => {
+          if (!node.originalValue) node.originalValue = node.nodeValue;
+          const originalText = node.originalValue;
+          const length = originalText.length;
+          const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*+=?[]{}<>\\/';
+
+          let iterations = 0;
+          // La velocidad se ajusta para que el efecto cascada dure alrededor de un segundo
+          const step = Math.max(0.5, length / (Math.random() * 20 + 20));
+
+          const interval = setInterval(() => {
+            let scrambled = '';
+            for (let i = 0; i < length; i++) {
+              if (i < iterations) {
+                scrambled += originalText[i];
+              } else {
+                scrambled += /\s/.test(originalText[i]) ? originalText[i] : chars[Math.floor(Math.random() * chars.length)];
+              }
+            }
+            node.nodeValue = scrambled;
+
+            if (iterations >= length) {
+              clearInterval(interval);
+              node.nodeValue = originalText;
+            }
+
+            iterations += step;
+          }, 30);
+        });
       });
-    });
+    }
 
     // Initialize EmailJS
-    (function() {
-      emailjs.init("NK4xcLsaVg5vb557I");
+    (function () {
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init("NK4xcLsaVg5vb557I");
+      }
     })();
 
     // Contact form handling with EmailJS
@@ -571,73 +770,63 @@
     const btnText = document.getElementById('btn-text');
     const btnIcon = document.getElementById('btn-icon');
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Show sending state
-      btnText.textContent = 'Sending...';
-      btnIcon.classList.add('animate-pulse');
-      
-      // Get form data
-      const formData = {
-        from_name: contactForm.name.value,
-        from_email: contactForm.email.value,
-        message: contactForm.message.value
-      };
-      
-      // Send email using EmailJS
-      emailjs.send('service_e5434lt', 'template_knaqgo5', formData)
-        .then((response) => {
-          console.log('Éxito:', response.status, response.text);
-          formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-400');
-          formMessage.classList.add('bg-green-500/20', 'text-green-400');
-          formMessage.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-          
-          btnText.textContent = 'Enviar Mensaje';
-          btnIcon.classList.remove('animate-pulse');
-          
-          contactForm.reset();
-          
-          setTimeout(() => {
-            formMessage.classList.add('hidden');
-          }, 5000);
-        })
-        .catch((error) => {
-          console.error('Error completo:', error);
-          formMessage.classList.remove('hidden', 'bg-green-500/20', 'text-green-400');
-          formMessage.classList.add('bg-red-500/20', 'text-red-400');
-          
-          // Mensaje más descriptivo basado en el tipo de error
-          if (error.text) {
-            formMessage.textContent = `Error: ${error.text}. Check the console or contact me directly by email.`;
-          } else if (error.status === 0) {
-            formMessage.textContent = 'Connection error. Please check your internet connection.';
-          } else {
-            formMessage.textContent = `Error (${error.status || 'unknown'}). Please contact me directly at: rebufforoy@gmail.com`;
-          }
-          
-          btnText.textContent = 'Enviar Mensaje';
-          btnIcon.classList.remove('animate-pulse');
-          
-          setTimeout(() => {
-            formMessage.classList.add('hidden');
-          }, 7000);
-        });
-    });
-
-    // Smooth scroll for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+    if (contactForm && typeof emailjs !== 'undefined') {
+      contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+
+        // Show sending state
+        const originalText = btnText.textContent;
+        btnText.textContent = 'EXECUTING...';
+        btnIcon.classList.add('animate-pulse');
+        formMessage.classList.add('hidden');
+
+        // Get form data
+        const formData = {
+          from_name: contactForm.name.value,
+          from_email: contactForm.email.value,
+          message: contactForm.message.value
+        };
+
+        // Send email using EmailJS
+        emailjs.send('service_e5434lt', 'template_knaqgo5', formData)
+          .then((response) => {
+            console.log('Success:', response.status, response.text);
+            formMessage.classList.remove('hidden', 'border', 'border-error/30', 'bg-error/10', 'text-error');
+            formMessage.classList.add('border', 'border-primary/30', 'bg-primary/10', 'text-primary');
+            formMessage.textContent = 'SYS_MSG: Delivery complete. Connection closed.';
+
+            btnText.textContent = originalText;
+            btnIcon.classList.remove('animate-pulse');
+
+            contactForm.reset();
+
+            setTimeout(() => {
+              formMessage.classList.add('hidden');
+            }, 5000);
+          })
+          .catch((error) => {
+            console.error('Error in delivery:', error);
+            formMessage.classList.remove('hidden', 'border', 'border-primary/30', 'bg-primary/10', 'text-primary');
+            formMessage.classList.add('border', 'border-error/30', 'bg-error/10', 'text-error');
+
+            if (error.text) {
+              formMessage.textContent = `CRITICAL_ERROR: ${error.text}. Check uplink.`;
+            } else if (error.status === 0) {
+              formMessage.textContent = 'CRITICAL_ERROR: Network timeout. Verify connection.';
+            } else {
+              formMessage.textContent = `ERROR_CODE_${error.status || 'UNKNOWN'}. Manual bypass: rebufforoy@gmail.com`;
+            }
+
+            btnText.textContent = originalText;
+            btnIcon.classList.remove('animate-pulse');
+
+            setTimeout(() => {
+              formMessage.classList.add('hidden');
+            }, 7000);
           });
-        }
       });
-    });
+    }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bbfc86331aaf625',t:'MTc2ODA4NTk0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
+
 </html>
