@@ -191,12 +191,19 @@
       <a class="text-slate-500 hover:text-primary hover:bg-primary/10 px-2 transition-colors font-space-grotesk tracking-tighter uppercase text-sm cursor-pointer active:scale-95"
         href="#sys">sys</a>
     </nav>
-    <div class="flex items-center gap-4 min-w-[100px]"></div>
+    <div class="flex items-center gap-4 min-w-[100px] justify-end">
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-primary hover:text-primary-fixed focus:outline-none transition-colors">
+        <span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+      </button>
+    </div>
   </header>
   <div class="flex min-h-screen">
     <!-- SideNavBar -->
-    <aside
-      class="hidden md:flex flex-col h-[calc(100vh-4rem)] sticky top-16 w-64 border-r border-primary/20 bg-[#0e0e0e] shadow-[5px_0_20px_rgba(142,255,113,0.05)] pb-8 z-40">
+    <aside id="sidebar-menu"
+      class="flex flex-col bg-[#0e0e0e] pb-8 z-40 border-primary/20 
+             fixed top-16 right-0 w-64 h-[calc(100vh-4rem)] border-l shadow-2xl translate-x-full transition-transform duration-300
+             md:translate-x-0 md:sticky md:border-l-0 md:border-r md:shadow-[5px_0_20px_rgba(142,255,113,0.05)]">
       <div class="p-6 border-b border-primary/10">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-10 h-10 border border-primary/40 bg-surface-container-highest flex items-center justify-center">
@@ -826,6 +833,34 @@
           });
       });
     }
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebarMenu = document.getElementById('sidebar-menu');
+
+    if (mobileMenuBtn && sidebarMenu) {
+      // Toggle slider
+      mobileMenuBtn.addEventListener('click', () => {
+        if (sidebarMenu.classList.contains('translate-x-full')) {
+          sidebarMenu.classList.remove('translate-x-full');
+          sidebarMenu.classList.add('translate-x-0');
+        } else {
+          sidebarMenu.classList.add('translate-x-full');
+          sidebarMenu.classList.remove('translate-x-0');
+        }
+      });
+
+      // Close slider on mobile when clicking a link
+      const sidebarLinks = sidebarMenu.querySelectorAll('a, #btn-quit, #btn-build');
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 768) {
+            sidebarMenu.classList.add('translate-x-full');
+            sidebarMenu.classList.remove('translate-x-0');
+          }
+        });
+      });
+    }
+
   </script>
 </body>
 
