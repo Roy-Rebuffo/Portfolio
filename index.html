@@ -391,13 +391,13 @@
    <section id="contacto" class="py-24 px-6" style="background: rgba(0,0,0,0.2);">
     <div class="max-w-7xl mx-auto">
      <div class="text-center mb-16">
-      <p class="mono text-indigo-400 text-sm mb-2">// Conectemos</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Contacto</h2>
-      <h3 class="text-2xl text-gray-300">¡Hablemos!</h3>
+      <p class="mono text-indigo-400 text-sm mb-2">// Let's connect</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Contact</h2>
+      <h3 class="text-2xl text-gray-300">Let's Talk!</h3>
      </div>
      <div class="grid lg:grid-cols-2 gap-12">
       <div>
-       <p class="text-gray-400 text-lg mb-8 leading-relaxed">Estoy siempre abierto a nuevas oportunidades y proyectos interesantes. No dudes en contactarme si quieres colaborar o simplemente charlar sobre tecnología.</p>
+       <p class="text-gray-400 text-lg mb-8 leading-relaxed">I'm always open to new opportunities and interesting projects. Feel free to reach out if you want to collaborate or just talk tech.</p>
        <div class="space-y-6"><!-- Email --> <a href="mailto:rebufforoy@gmail.com" class="contact-card flex items-center gap-4 p-4 rounded-xl border border-gray-700/50 bg-gray-800/30 hover:bg-gray-800/50">
          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
           <svg class="w-6 h-6 text-indigo-400" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /> <polyline points="22,6 12,13 2,6" />
@@ -439,12 +439,12 @@
       </div><!-- Contact Form -->
       <div class="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-gray-700/50">
        <form id="contact-form" class="space-y-6">
-        <div><label for="name" class="block text-gray-300 text-sm mb-2">Nombre</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all" placeholder="Tu nombre">
+        <div><label for="name" class="block text-gray-300 text-sm mb-2">Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all" placeholder="Your name">
         </div>
-        <div><label for="email" class="block text-gray-300 text-sm mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all" placeholder="tu@email.com">
+        <div><label for="email" class="block text-gray-300 text-sm mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all" placeholder="you@email.com">
         </div>
-        <div><label for="message" class="block text-gray-300 text-sm mb-2">Mensaje</label> <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all resize-none" placeholder="Tu mensaje..."></textarea>
-        </div><button type="submit" class="w-full btn-primary px-8 py-4 rounded-xl text-white font-semibold flex items-center justify-center gap-2"> <span id="btn-text">Enviar Mensaje</span>
+        <div><label for="message" class="block text-gray-300 text-sm mb-2">Message</label> <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 transition-all resize-none" placeholder="Your message..."></textarea>
+        </div><button type="submit" class="w-full btn-primary px-8 py-4 rounded-xl text-white font-semibold flex items-center justify-center gap-2"> <span id="btn-text">Send Message</span>
          <svg id="btn-icon" class="w-5 h-5" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13" /> <polygon points="22 2 15 22 11 13 2 9 22 2" />
          </svg></button>
         <div id="form-message" class="hidden text-center py-3 rounded-xl"></div>
@@ -575,7 +575,7 @@
       e.preventDefault();
       
       // Show sending state
-      btnText.textContent = 'Enviando...';
+      btnText.textContent = 'Sending...';
       btnIcon.classList.add('animate-pulse');
       
       // Get form data
@@ -591,7 +591,7 @@
           console.log('Éxito:', response.status, response.text);
           formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-400');
           formMessage.classList.add('bg-green-500/20', 'text-green-400');
-          formMessage.textContent = '¡Mensaje enviado con éxito! Te contactaré pronto.';
+          formMessage.textContent = 'Message sent successfully! I\'ll get back to you soon.';
           
           btnText.textContent = 'Enviar Mensaje';
           btnIcon.classList.remove('animate-pulse');
@@ -609,11 +609,11 @@
           
           // Mensaje más descriptivo basado en el tipo de error
           if (error.text) {
-            formMessage.textContent = `Error: ${error.text}. Revisa la consola o usa el email directamente.`;
+            formMessage.textContent = `Error: ${error.text}. Check the console or contact me directly by email.`;
           } else if (error.status === 0) {
-            formMessage.textContent = 'Error de conexión. Verifica tu conexión a internet.';
+            formMessage.textContent = 'Connection error. Please check your internet connection.';
           } else {
-            formMessage.textContent = `Error (${error.status || 'desconocido'}). Por favor, usa el email directamente: rebufforoy@gmail.com`;
+            formMessage.textContent = `Error (${error.status || 'unknown'}). Please contact me directly at: rebufforoy@gmail.com`;
           }
           
           btnText.textContent = 'Enviar Mensaje';
